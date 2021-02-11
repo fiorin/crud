@@ -13,19 +13,19 @@ export class DeveloperService {
     private developerRepository: DeveloperRepository,
   ) {}
 
-  async getDevelopers(query: DeveloperQueryDto): Promise<Developer[]> {
-    const { page, limit, ...where } = query;
-    return this.developerRepository.getDevelopers(page, limit, where);
+  async createDeveloper(
+    createDeveloperDto: CreateDeveloperDto,
+  ): Promise<Developer> {
+    return this.developerRepository.createDeveloper(createDeveloperDto);
   }
 
   async getDeveloper(idDeveloper: number): Promise<Developer> {
     return this.developerRepository.getDeveloper(idDeveloper);
   }
 
-  async createDeveloper(
-    createDeveloperDto: CreateDeveloperDto,
-  ): Promise<Developer> {
-    return this.developerRepository.createDeveloper(createDeveloperDto);
+  async getDevelopers(query: DeveloperQueryDto): Promise<Developer[]> {
+    const { page, limit, ...where } = query;
+    return this.developerRepository.getDevelopers(page, limit, where);
   }
 
   async updateDeveloper(
