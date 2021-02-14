@@ -5,14 +5,14 @@ Para o desenvolvimento do backend como API foram tomadas as seguintes decisões 
 | ------ | ------ |
 | Nest.js | Construção dos endpoints. |
 | Yarn | Gerenciamento de dependências. |
-| Typescript | Em todo o projeto visando com a tipagem de entrada de valores no fluxo de componentes. |
+| Typescript | Em todo o projeto para a tipagem de valores no fluxo de dados. |
 | Postgres | Banco de dados. |
 | TypeORM | Mapeamento de entidades e criação do db. |
 | Jest | Testes unitários. |
 | Docker | Preparação de ambiente de banco e servidor. |
 | Adminer | Visualização do db em browser. |
 
-Requisitos para executção do projeto:
+Requisitos para execução do projeto:
   - Nodejs
   - Npm
   - Yarn
@@ -34,7 +34,7 @@ Os endpoints da aplicação estarão disponíveis em:
 http://localhost:3001
 ```
 
-| Método | Para? | Para? |
+| Método | Endpoint | Para? |
 | ------ | ------ | ------ |
 | GET | /developers | Listagem de desenvolvedores. |
 | GET | /developers? | Filtro de desenvolvedor por parâmetros de query. |
