@@ -1,48 +1,46 @@
 version: '3.8'
 
 services:
-  dev:
-    container_name: nestjs_api_dev
-    image: nestjs-api-dev:1.0.0
-    build:
-      context: .
-      target: development
-      dockerfile: ./Dockerfile
-    command: npm run start:debug
-    ports:
-      - 3000:3000
-      - 9229:9229
-    networks:
-      - nesjs-network
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    restart: unless-stopped
-
-  pgsql:
+  pgsql-crud:
     image: postgres:alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
     ports:
       - '5432:5432'
-    container_name: 'pgsql'
+    container_name: pgsql-crud
     restart: always
     networks:
-      - nesjs-network
+      - crud-network
     volumes:
-      - pg-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pass
+      - ./docker/db:/var/lib/postgresql/data
 
-  adminer:
+  adminer-crud:
     image: adminer
+    container_name: adminer-crud
     restart: always
     ports:
       - 8080:8080
     networks:
-      - nesjs-network
+      - crud-network
+
+  nest-crud:
+    image: nestjs-api-dev:1.0.0
+    build:
+      context: .
+      target: development
+      dockerfile: ./docker/nest.Dockerfile
+    ports:
+      - 3001:3000
+    command: yarn start:dev
+    container_name: nest-crud
+    restart: unless-stopped
+    networks:
+      - crud-network
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
 
 networks:
-  nesjs-network:
-    
-volumes:
-  pg-data:
+  crud-network:

@@ -43,6 +43,7 @@ export class DeveloperRepository extends Repository<Developer> {
     try {
       return await developer.save();
     } catch (error) {
+      throw new InternalServerErrorException(error);
       throw new InternalServerErrorException('Usuário não inserido');
     }
   }

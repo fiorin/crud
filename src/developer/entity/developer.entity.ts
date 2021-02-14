@@ -5,10 +5,10 @@ export class Developer extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 200 })
+  @Column({ type: 'varchar', length: 50 })
   name: string;
 
-  @Column({ nullable: true, type: 'varchar', length: 1 })
+  @Column({ nullable: true, type: 'varchar', length: 20 })
   gender: string;
 
   @Column({ type: 'int' })

@@ -33,6 +33,7 @@ export class DeveloperController {
   async createDeveloper(
     @Body() createDeveloperDto: CreateDeveloperDto,
   ): Promise<Developer> {
+    console.log(createDeveloperDto);
     const developer = await this.developerService.createDeveloper(
       createDeveloperDto,
     );
