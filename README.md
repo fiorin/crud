@@ -108,4 +108,11 @@ Com o método PUT e o id de usuário na estrutura abaixo é possível atualizar 
 Com o método DELETE e o id de usuário é possível remover um usuário do banco.
 A remoção é física, não lógica.
 
+## Testes
+Para demonstração de testes com o Jest.js, executar o comando:
+```sh
+yarn add jest
+yarn test
+```
+
 [![N|Solid](http://fior.in/img/fiorin.png)](http://fior.in)
